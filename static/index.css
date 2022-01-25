@@ -112,7 +112,7 @@ body {
     left: 0;
     width: 100%;
     text-align: center;
-    color: rgb(233, 138, 131);
+    color: rgb(252, 143, 114);
     font-size: 4em;
     text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
     overflow: hidden;
@@ -124,7 +124,7 @@ body {
     right: 0;
     bottom: 0;
     overflow: hidden;
-    background: #fff;
+    background: #b0eeff;
 }
 
 .GameLayer {
@@ -146,7 +146,7 @@ body {
 .t4,
 .t5 {
     background-size: auto 100%;
-    background-image: url(./image/xb.png);
+    background-image: url(./image/ClickBefore.png);
 }
 
 .tt1,

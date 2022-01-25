@@ -3,39 +3,36 @@
 </p>
 <div align="center">
 
-# EatKano
+# 哼哼啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
 
-_🦌 网页小游戏 🥛_
+_🦌 网页沼气池 🥛_
 
 </div>
 
 
 ## 简介
 
-小游戏：吃掉小鹿乃
+小游戏：先辈来了-原来越离谱
 
-浏览量超10,000,000+
+浏览量: ** 1145141919810+ **
 
-线上版本:https://xingye.me/game/eatkano/index.php
+[原版线上版本](https://xingye.me/game/eatkano/index.php)
 
-Github Page:https://arcxingye.github.io/EatKano/index.html
+[原版Github Page](https://arcxingye.github.io/EatKano/index.html)
 
-## 可选功能
+[原仓库](https://github.com/arcxingye/EatKano)
 
-简易排行榜(日/周/月)
+### 魔改内容
 
-需导入并配置数据库，信息填进conn.php
-
-如启用务必更换密钥及添加一些安全防范代码
-
-以及对index.js进行混淆加密压缩
-
-不需要排行榜把PHP文件都扔掉即可
+现在是*6道*不是*4道*了!
+但这也带来亿丢丢小问题:本来可能连接的恶臭变成分开了~,不管了当成增加难度吧~
+时间现在是30秒!好欸
+更改了有效判定范围,你现在必须得点击恶臭才能判定,点上或点下都不算哦!
 
 ## 其它事项
 
-点下star吧~
+如果可以..就去点一下原作者star吧~
 
-欢迎修改和续写，需保留跳转此仓库的开源按钮
+欢迎修改和续写，需保留跳转[原仓库](https://github.com/arcxingye/EatKano)的开源按钮
 
-如整成自己想要的吃掉xxx，可以Fork一份改下图和字，并在github pages运行
+如整成自己想要的吃掉xxx，可以Fork一份改下图和字，并在github pages/Gitee Pages运行

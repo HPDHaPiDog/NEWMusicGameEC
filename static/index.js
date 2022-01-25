@@ -66,7 +66,7 @@ function _refreshSize() {
         for (var j = 0; j < box.children.length; j++) {
             var r = box.children[j],
                 rstyle = r.style;
-            rstyle.left = (j % 4) * blockSize + 'px';
+            rstyle.left = (j % 6) * blockSize + 'px';
             rstyle.bottom = Math.floor(j / 4) * blockSize + 'px';
             rstyle.width = blockSize + 'px';
             rstyle.height = blockSize + 'px';
@@ -83,16 +83,16 @@ function _refreshSize() {
     var y = ((_gameBBListIndex) % 10) * blockSize;
     f.y = y;
     f.style[transform] = 'translate3D(0,' + f.y + 'px,0)';
-    a.y = -blockSize * Math.floor(f.children.length / 4) + y;
+    a.y = -blockSize * Math.floor(f.children.length / 6) + y;
     a.style[transform] = 'translate3D(0,' + a.y + 'px,0)';
 }
 
 function countBlockSize() {
-    blockSize = body.offsetWidth / 4;
+    blockSize = body.offsetWidth / 6;
     body.style.height = window.innerHeight + 'px';
     GameLayerBG.style.height = window.innerHeight + 'px';
-    touchArea[0] = window.innerHeight - blockSize * 0;
-    touchArea[1] = window.innerHeight - blockSize * 3;
+    touchArea[0] = window.innerHeight - blockSize * 1;
+    touchArea[1] = window.innerHeight - blockSize * 2;
 }
 var _gameBBList = [],
     _gameBBListIndex = 0,
@@ -122,7 +122,7 @@ function gameRestart() {
     _gameScore = 0;
     _gameOver = false;
     _gameStart = false;
-    _gameTimeNum = 20;
+    _gameTimeNum = 30;
     GameTimeLayer.innerHTML = creatTimeText(_gameTimeNum);
     countBlockSize();
     refreshGameLayer(GameLayer[0]);
@@ -154,7 +154,7 @@ function encrypt(text){
 
 function SubmitResults() {
     var system = "其他操作系统";
-    var area = "异世界";
+    var area = "沼气世界";
     if (document.getElementById("username").value) {
         if (navigator.appVersion.indexOf("Win") != -1) system = "Windows";
         if (navigator.appVersion.indexOf("Mac") != -1) system = "Macintosh";
@@ -175,7 +175,7 @@ function SubmitResults() {
 function gameTime() {
     _gameTimeNum--;
     if (_gameTimeNum <= 0) {
-        GameTimeLayer.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;时间到！';
+        GameTimeLayer.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;木大木大木大!';
         gameOver();
         GameLayerBG.className += ' flash';
         createjs.Sound.play("end");
@@ -191,23 +191,23 @@ var _ttreg = / t{1,2}(\d+)/,
     _clearttClsReg = / t{1,2}\d+| bad/;
 
 function refreshGameLayer(box, loop, offset) {
-    var i = Math.floor(Math.random() * 1000) % 4 + (loop ? 0 : 4);
+    var i = Math.floor(Math.random() * 1000) % 6 + (loop ? 0 : 6);
     for (var j = 0; j < box.children.length; j++) {
         var r = box.children[j],
             rstyle = r.style;
-        rstyle.left = (j % 4) * blockSize + 'px';
-        rstyle.bottom = Math.floor(j / 4) * blockSize + 'px';
+        rstyle.left = (j % 6) * blockSize + 'px';
+        rstyle.bottom = Math.floor(j / 6) * blockSize + 'px';
         rstyle.width = blockSize + 'px';
         rstyle.height = blockSize + 'px';
         r.className = r.className.replace(_clearttClsReg, '');
         if (i == j) {
             _gameBBList.push({
-                cell: i % 4,
+                cell: i % 6,
                 id: r.id
             });
             r.className += ' t' + (Math.floor(Math.random() * 1000) % 5 + 1);
             r.notEmpty = true;
-            i = (Math.floor(j / 4) + 1) * 4 + Math.floor(Math.random() * 1000) % 4;
+            i = (Math.floor(j / 6) + 1) * 6 + Math.floor(Math.random() * 1000) % 6;
         } else {
             r.notEmpty = false;
         }
@@ -215,7 +215,7 @@ function refreshGameLayer(box, loop, offset) {
     if (loop) {
         box.style.webkitTransitionDuration = '0ms';
         box.style.display = 'none';
-        box.y = -blockSize * (Math.floor(box.children.length / 4) + (offset || 0)) * loop;
+        box.y = -blockSize * (Math.floor(box.children.length / 6) + (offset || 0)) * loop;
         setTimeout(function () {
             box.style[transform] = 'translate3D(0,' + box.y + 'px,0)';
             setTimeout(function () {
@@ -233,7 +233,7 @@ function gameLayerMoveNextRow() {
     for (var i = 0; i < GameLayer.length; i++) {
         var g = GameLayer[i];
         g.y += blockSize;
-        if (g.y > blockSize * (Math.floor(g.children.length / 4))) {
+        if (g.y > blockSize * (Math.floor(g.children.length / 6))) {
             refreshGameLayer(g, 1, -1);
         } else {
             g.style[transform] = 'translate3D(0,' + g.y + 'px,0)';
@@ -277,8 +277,8 @@ function createGameLayer() {
         var id = 'GameLayer' + i;
         html += '<div id="' + id + '" class="GameLayer">';
         for (var j = 0; j < 10; j++) {
-            for (var k = 0; k < 4; k++) {
-                html += '<div id="' + id + '-' + (k + j * 4) + '" num="' + (k + j * 4) + '" class="block' + (k ? ' bl' : '') +
+            for (var k = 0; k < 6; k++) {
+                html += '<div id="' + id + '-' + (k + j * 6) + '" num="' + (k + j * 6) + '" class="block' + (k ? ' bl' : '') +
                     '"></div>';
             }
         }
@@ -304,7 +304,7 @@ function showGameScoreLayer() {
     var c = document.getElementById(_gameBBList[_gameBBListIndex - 1].id).className.match(_ttreg)[1];
     l.className = l.className.replace(/bgc\d/, 'bgc' + c);
     document.getElementById('GameScoreLayer-text').innerHTML = shareText(_gameScore);
-    var score_text='得分&nbsp;&nbsp;';
+    var score_text='沼气&nbsp;&nbsp;';
     score_text+=deviation_time<23000?_gameScore:"<span style='color:red;'>"+_gameScore+"</span>";
     document.getElementById('GameScoreLayer-score').innerHTML = score_text;
     var bast = cookie('bast-score');
@@ -314,7 +314,7 @@ function showGameScoreLayer() {
             cookie('bast-score', bast, 100);
         }
     }
-    document.getElementById('GameScoreLayer-bast').innerHTML = '最佳&nbsp;&nbsp;' + bast;
+    document.getElementById('GameScoreLayer-bast').innerHTML = '最臭&nbsp;&nbsp;' + bast;
     l.style.display = 'block';
 }
 
@@ -337,15 +337,15 @@ function backBtn() {
 function shareText(score) {
     var date2 = new Date();
     deviation_time = (date2.getTime() - _date1.getTime())
-    if (deviation_time > 23000) {
-        return '倒计时多了' + ((deviation_time / 1000) - 20).toFixed(2) + "s";
+    if (deviation_time > 33000) {
+        return '倒计时多了' + ((deviation_time / 1000) - 30).toFixed(2) + "s";
     }
     SubmitResults();
-    if (score <= 49) return '试着好好练一下？';
-    if (score <= 99) return 'TCL';
-    if (score <= 149) return 'TQL';
-    if (score <= 199) return '您';
-    return '人？';
+    if (score <= 49) return '菜就多练练!';
+    if (score <= 99) return '不够臭!';
+    if (score <= 149) return '臭起来了!';
+    if (score <= 199) return '沼气池是吧';
+    return '先辈是你吗先辈!';
 }
 
 function toStr(obj) {
@@ -409,6 +409,7 @@ function goRank() {
     window.location.href=link;
 }
 console.log("不修改，好嘛？乱传又有什么用呢？(ˉ▽ˉ；)...")
+console.log("别胡说,我改了!!")
 document.onkeydown = function (e) {
     if (e.keyCode == 123) {
         return false
