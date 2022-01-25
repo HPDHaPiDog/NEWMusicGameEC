@@ -91,8 +91,8 @@ function countBlockSize() {
     blockSize = body.offsetWidth / 6;
     body.style.height = window.innerHeight + 'px';
     GameLayerBG.style.height = window.innerHeight + 'px';
-    touchArea[0] = window.innerHeight - blockSize * 1;
-    touchArea[1] = window.innerHeight - blockSize * 2;
+    touchArea[0] = window.innerHeight - blockSize * 0;
+    touchArea[1] = window.innerHeight - blockSize * 3;
 }
 var _gameBBList = [],
     _gameBBListIndex = 0,
